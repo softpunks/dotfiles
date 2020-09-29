@@ -18,6 +18,7 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'owickstrom/vim-colors-paramount' " Current favorite
 
 " Editor Utils
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'zxqfl/tabnine-vim'
 Plug 'junegunn/vim-easy-align'

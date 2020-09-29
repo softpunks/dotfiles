@@ -1,3 +1,26 @@
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
+
+" bindings for copying to system clipboard
+vnoremap <silent> <Leader>y "*y
+nnoremap <silent> <Leader>y "*y
+
 " TODO: Figure out why I'd been disabling netrw
 " " " Disable netrw
 " let g:loaded_netrw = 1
