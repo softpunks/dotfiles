@@ -1,0 +1,52 @@
+### general
+alias back='cd -'
+alias cp='cp -iv'
+alias gr='grep -Irisn --color=auto'
+alias hk='heroku'
+alias l='exa -la'
+alias ll='exa -l'
+alias ln='ln -v'
+alias ls='ls -hF --color=auto'
+alias mkdir='mkdir -v'
+alias mv='mv -iv'
+alias p='ps -a'
+alias path='pretty_path'
+alias rm='rm -Iv'
+
+### git
+alias g='git'
+alias gm='git checkout master && git pull origin master'
+
+### hub
+alias hc='hub compare'
+alias hb='hub browse'
+
+### make
+alias m='make clean && make'
+alias mc='make clean'
+
+### valgrind
+alias val='valgrind'
+alias valgrind='valgrind --leak-check=yes'
+
+### rcm
+alias mkrc='mkrc -v'
+alias rcdn='rcdn -v'
+alias rcup='rcup -v'
+
+### ruby
+alias be='bundle exec'
+
+### OS-specific
+case "$OSTYPE" in
+  (darwin*)
+    alias ls="ls -hFG"
+    alias rm="rm -dv"
+  ;;
+  (cygwin*)
+    # ...
+  ;;
+  (linux*)
+    # ...
+  ;;
+esac

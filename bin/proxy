@@ -1,0 +1,60 @@
+#!/bin/sh
+ 
+PROXY_INTERFACE="Wi-Fi"
+PROXY_HOST=127.0.0.1
+PROXY_PORT=1337
+ 
+#assumes you have an officedb.remote setup in your ./ssh/config similar to
+#Host officedb.remote
+#    Hostname 207.154.97.177
+#    User <username>
+#    Port 4654
+#    LocalForward 9999 localhost:5432
+#
+#
+ 
+SOCKS_LOG=/tmp/ssh-socks-proxy-log.txt
+SOCKS_PIDFILE=/tmp/ssh-socks-proxy.pid
+ 
+SSH_CMD="ssh -t -t -D $PROXY_HOST:$PROXY_PORT -q -C -N -f officedb.remote"
+ 
+if [ "$1" = "on" ]; then
+    nohup "$SSH_CMD" > "$SOCKS_LOG" 2>&1 &
+    echo $! > "$SOCKS_PIDFILE"
+ 
+    sudo networksetup -setsocksfirewallproxy "$PROXY_INTERFACE" $PROXY_HOST $PROXY_PORT
+    echo "SOCKS proxy enabled"
+ 
+elif [ "$1" = "off" ]; then
+    sudo kill -9 $(cat "$SOCKS_PIDFILE")
+    rm "$SOCKS_PIDFILE"
+ 
+    sudo networksetup -setsocksfirewallproxystate "$PROXY_INTERFACE" off
+    echo "SOCKS proxy disabled"
+ 
+elif [ "$1" = "status" ]; then
+    echo "====================================================="
+    echo "Network Services:"
+    echo "====================================================="
+    networksetup -listallnetworkservices
+    echo
+    echo "====================================================="
+    echo "Current SOCKS Proxy Settings:"
+    echo "====================================================="
+    networksetup -getsocksfirewallproxy "$PROXY_INTERFACE"
+    echo
+ 
+else
+    echo " $(basename \"$0\" ) toggles SOCKS proxy settings on OS X"
+    echo
+    echo "Usage: "
+    echo "  $ proxy on           # turns SOCKS proxy on"
+    echo "  $ proxy off          # turns SOCKS proxy off"
+    echo "  $ proxy status       # prints status of proxy settings"
+    echo
+    echo "proxy interface:      " $PROXY_INTERFACE
+    echo "proxy host:           " $PROXY_HOST
+    echo "proxy port:           " $PROXY_PORT
+    echo
+    exit 65 # end process with error to indicate incorrect arguments
+fi

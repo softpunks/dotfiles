@@ -1,0 +1,10 @@
+set -xg PATH /opt/puppetlabs/bin $PATH
+set -xg ETCDCTL_API 3
+set -xg VAULT_ADDR http://127.0.0.1:8200
+set -xg VAULT_TOKEN s.3j09tkgJtpjMy9xUpqN27LC6
+set -xg TTC_REPOS "/Users/maxinekrebs/Development"
+set -xg TMUX_SESSION_NAME "procore"
+set -xg SLACK_DEVELOPER_MENU TRUE
+set -xg GITHUB_TOKEN "ef5f609445f1c1f12523f7e65f999f04bf0aa23d"
+set -xg HOMEBREW_GITHUB_API_TOKEN $GITHUB_TOKEN
+
