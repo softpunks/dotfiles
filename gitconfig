@@ -119,7 +119,6 @@
   autocrlf   = input
   editor     = vim
   ignoreCase = true
-  pager = diff-so-fancy | less --tabs=4 -RFX
   safecrlf   = warn
   trustctime = false
   excludesfile = ~/.gitignore
