@@ -18,10 +18,6 @@ nnoremap <C-l> <C-w>l
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
 
-" bindings for copying to system clipboard
-vnoremap <silent> <Leader>y "*y
-nnoremap <silent> <Leader>y "*y
-
 " TODO: Figure out why I'd been disabling netrw
 " " " Disable netrw
 " let g:loaded_netrw = 1
@@ -239,10 +235,11 @@ else
 endif
 
 map <leader>B :Buffers<CR>
-map <leader>E :bufdo! :e!<CR><CR>
+map <leader>e :bufdo! :e!<CR><CR>
 map <leader>F :Filetypes<CR>
 map <leader>f :Rg<Space>
-map <leader>q :bufdo! :bd!<CR><CR>
+map <leader>q :bd!<CR><CR>
+map <leader>Q :bufdo! :bd!<CR><CR>
 map <leader>R :source ~/.vimrc<CR>
 map <leader>W :FixWhitespace<CR>:w<CR>
 map <leader>p :Commands<CR>
@@ -335,9 +332,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" Reload buffers
-map <leader>e :set autoread <bar> :checktime <bar> :set noautoread<cr>
 
 " macOS clipboard workaround (https://github.com/tmux/tmux/issues/543#issuecomment-248980734)
 set clipboard=unnamed
