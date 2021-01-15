@@ -352,3 +352,7 @@ nnor ,YF :let @"=expand("%:p")<CR> " Mnemonic: Yank File path
 nnor ,cf :let @*=expand("%p")<CR>  " Mnemonic: Copy File path
 nnor ,yf :let @"=expand("%p")<CR>  " Mnemonic: Yank File path
 nnor ,fn :let @"=expand("%")<CR>   " Mnemonic: yank File Name
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_fmt_command = "goimports"
