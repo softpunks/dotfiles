@@ -16,13 +16,6 @@ set -xg PATH $HOME/.bin $PATH
 set -xg VISUAL vim
 set -xg EDITOR $VISUAL
 
-set -xg TTC_SAY_BOX 'cat'
-set -xg TTC_BOTS 'tinycarebot,selfcare_bot,magicrealismbot'
-set -xg TTC_WEATHER 'Ventura'
-set -xg TTC_CELSIUS false
-set -xg TTC_APIKEYS false
-set -xg TTC_TERMINAL_TITLE false
-
 source ~/.asdf/asdf.fish
 
 if test -e $HOME/.config/fish/config.fish.local
